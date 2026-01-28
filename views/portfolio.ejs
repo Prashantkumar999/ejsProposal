@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Holiday Homes - Portfolio</title>
+
+  <!-- Geist Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      font-family: 'Geist', sans-serif;
+    }
+
+    /* A4 Page */
+    .a4-page {
+      width: 491px;
+      height: 694px;
+      background: white;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* Inner Border Box */
+    .inner-div {
+      width: 451px;
+      height: 654px;
+      border: 2px solid #caa46a;
+      margin: auto;
+      padding: 15px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* Top Corner Logo */
+    .corner-logo {
+      width: 14px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    /* Title */
+    .title {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #7A542A;
+      margin-bottom: 15px;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    /* Stat Cards */
+    .stat-card {
+      background: #EFCE8D;
+      border-radius: 6px;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .stat-card span {
+      font-size: 10px;
+      font-weight: 500;
+    }
+
+    /* Stars Section */
+    .stars {
+      background: #EFCE8D;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 10px;
+      margin: 8px 0;
+    }
+
+    .stars img {
+      width: 100px;
+      display: block;
+      margin: auto;
+      margin-bottom: 8px;
+    }
+
+    /* Partners Title */
+    .partners-title {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      color: #7A542A;
+      margin: 20px 0 15px 0;
+    }
+
+    /* Partners Grid */
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    /* Partner Card */
+    .partner-box {
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+    }
+
+    .partner-box img {
+      max-height: 20px;
+      max-width: 90%;
+      object-fit: contain;
+    }
+
+    /* Many More */
+    .partner-box.more {
+      font-size: 10px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    /* Footer */
+    .footer {
+      font-size: 10px;
+      position: absolute;
+      bottom: 8px;
+      left: 20px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="a4-page">
+  <div class="inner-div">
+    <img src="/images/R.svg" class="corner-logo" alt="Royal Logo">
+
+    <h1 class="title">OUR PORTFOLIO</h1>
+
+    <!-- Portfolio Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <strong><%= managedProperties %></strong>
+        <span>Managed Premium Properties</span>
+      </div>
+      <div class="stat-card">
+        <strong><%= fiveStarReviews %></strong>
+        <span>5 Star Reviews</span>
+      </div>
+      <div class="stat-card">
+        <strong><%= bookingsPerMonth %></strong>
+        <span>Managed Bookings per Month</span>
+      </div>
+      <div class="stat-card">
+        <strong><%= travelersMonthly %></strong>
+        <span>Hosted Travelers Monthly</span>
+      </div>
+      <div class="stat-card">
+        <strong><%= managedAssets %></strong>
+        <span>Managed Assets</span>
+      </div>
+      <div class="stat-card">
+        <strong><%= trustedOwners %></strong>
+        <span>Trusted Home Owners in Abu Dhabi</span>
+      </div>
+    </div>
+
+    <!-- Stars -->
+    <div class="stars">
+      <img src="/images/fivestars.svg" alt="Five Stars">
+      <span>Delivering 5 Star Hospitality Excellence</span>
+    </div>
+
+    <h2 class="partners-title">OUR DISTRIBUTION PARTNERS</h2>
+
+    <!-- Partners -->
+    <div class="partners-grid">
+      <div class="partner-box"><img src="/images/dubizzle.svg" alt=""></div>
+      <div class="partner-box"><img src="/images/partner2.svg" alt=""></div>
+      <div class="partner-box"><img src="/images/booking.svg" alt=""></div>
+      <div class="partner-box"><img src="/images/airbnb.svg" alt=""></div>
+      <div class="partner-box"><img src="/images/agoda.svg" alt=""></div>
+      <div class="partner-box"><img src="/images/hotels.svg" alt=""></div>
+      <div class="partner-box"><img src="/images/bayut.svg" alt=""></div>
+      <div class="partner-box"><img src="/images/propertyfinder.svg" alt=""></div>
+      <div class="partner-box"><img src="/images/home&villas.svg" alt=""></div>
+      <div class="partner-box"><img src="/images/expedia.svg" alt=""></div>
+      <div class="partner-box"><img src="/images/vrbo.svg" alt=""></div>
+      <div class="partner-box more">Many More</div>
+    </div>
+
+  </div>
+
+  <div class="footer">Confidential © Royal Holiday Homes</div>
+</div>
+
+</body>
+</html>

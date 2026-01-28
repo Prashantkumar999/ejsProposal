@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Expected Revenue Comparison</title>
+
+  <!-- Geist Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      font-family: 'Geist', system-ui, sans-serif;
+    }
+
+    /* PAGE SIZE — MATCHING OTHER BROCHURE PAGES */
+    .a4-page {
+      width: 491px;
+      height: 694px;
+      background: #fff;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* INNER BORDER */
+    .inner-div {
+      width: 451px;
+      height: 654px;
+      border: 2px solid #c9a26b;
+      padding: 5px 20px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* LOGO */
+    .corner-logo {
+      width: 14px;
+      position: absolute;
+      top: 18px;
+      right: 18px;
+    }
+
+    /* HEADINGS */
+    .heading {
+      text-align: center;
+      color: #8b5e2f;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .subheading {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      color: #7A542A;
+    }
+
+    .caption {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    /* CHART */
+    .chart-wrapper {
+      height: 320px;
+      margin-top: 70px;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    /* FOOTER */
+    .footer {
+      position: absolute;
+      bottom: 5px;
+      left: 20px;
+      font-size: 10px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="a4-page">
+  <div class="inner-div">
+
+    <img src="/images/svg_logo.svg" class="corner-logo" alt="Logo">
+
+    <h1 class="heading">EXPECTED REVENUE COMPARISON</h1>
+    <div class="subheading">Revenue vs Profit Analysis</div>
+    <div class="caption">Gross revenue vs net income by scenario</div>
+
+    <div class="chart-wrapper">
+      <canvas id="revenueChart"></canvas>
+    </div>
+
+  </div>
+
+  <div class="footer">Confidential © Royal Holiday Homes</div>
+</div>
+
+<script>
+  const chartData = {
+    labels: ["Conservative", "Realistic", "Confident", "Optimistic"],
+    datasets: [
+      {
+        label: "Gross Revenue",
+        data: [243430, 259330, 275850, 291740],
+        backgroundColor: "#3b82f6",
+        barPercentage: 0.7
+      },
+      {
+        label: "Net Revenue",
+        data: [170250, 183440, 197150, 210350],
+        backgroundColor: "#b08b57",
+        barPercentage: 0.7
+      }
+    ]
+  };
+
+  const valueLabelPlugin = {
+    id: 'valueLabel',
+    afterDatasetsDraw(chart) {
+      const { ctx } = chart;
+      ctx.save();
+      ctx.font = '600 9px Geist';
+      ctx.textAlign = 'center';
+
+      chart.data.datasets.forEach(dataset => {
+        chart.getDatasetMeta(chart.data.datasets.indexOf(dataset)).data.forEach((bar, i) => {
+          ctx.fillText(
+            (dataset.data[i] / 1000).toFixed(1) + "K",
+            bar.x,
+            bar.y - 6
+          );
+        });
+      });
+
+      ctx.restore();
+    }
+  };
+
+  new Chart(document.getElementById("revenueChart"), {
+    type: "bar",
+    data: chartData,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: "bottom",
+          labels: {
+            font: { size: 10, weight: "600" }
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: { font: { size: 10, weight: "600" } },
+          grid: { display: false }
+        },
+        y: {
+          max: 300000,
+          ticks: {
+            stepSize: 75000,
+            callback: v => v / 1000 + "K",
+            font: { size: 9 }
+          }
+        }
+      }
+    },
+    plugins: [valueLabelPlugin]
+  });
+</script>
+
+</body>
+</html>

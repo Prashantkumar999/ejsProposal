@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Expected Revenue Comparison</title>
+
+  <!-- Geist Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      font-family: 'Geist', system-ui, sans-serif;
+    }
+
+    /* PAGE SIZE — MATCHING OTHER BROCHURE PAGES */
+    .a4-page {
+      width: 491px;
+      height: 694px;
+      background: #fff;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* INNER BORDER */
+    .inner-div {
+      width: 451px;
+      height: 654px;
+      border: 2px solid #c9a26b;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* LOGO */
+    .corner-logo {
+      width: 14px;
+      position: absolute;
+      top: 18px;
+      right: 18px;
+    }
+
+    /* HEADINGS */
+    .heading {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      color: #8b5e2f;
+      margin-bottom: 20px;
+    }
+
+    .subheading {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: #8C6239;
+    }
+
+    .caption {
+      text-align: center;
+      font-size: 10px;
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    /* CHART */
+    .chart-wrapper {
+      height: 420px;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    /* FOOTER */
+    .footer {
+      font-size: 10px;
+      position: absolute;
+      bottom: 5px;
+      left: 20px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="a4-page">
+  <div class="inner-div">
+
+    <img src="/images/svg_logo.svg" class="corner-logo" alt="Logo">
+
+    <h1 class="heading">EXPECTED REVENUE COMPARISON</h1>
+    <div class="subheading">Monthly STR vs LTR Comparison</div>
+    <div class="caption">Based on realistic (85%) scenario</div>
+
+    <div class="chart-wrapper">
+      <canvas id="monthlyChart"></canvas>
+    </div>
+
+  </div>
+
+  <div class="footer">Confidential © Royal Holiday Homes</div>
+</div>
+
+<script>
+  const data = {
+    labels: ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"],
+    datasets: [
+      {
+        label: "Long Term Benchmark",
+        data: Array(12).fill(12500),
+        backgroundColor: "#d9d9d9",
+        barThickness: 10
+      },
+      {
+        label: "Short Term Revenue",
+        data: [25296,23654,25296,23616,22618,15840,15178,16666,18144,20832,23616,28272],
+        backgroundColor: "#7A542A",
+        barThickness: 10
+      }
+    ]
+  };
+
+  new Chart(document.getElementById("monthlyChart"), {
+    type: "bar",
+    data,
+    options: {
+      indexAxis: "y",
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: "bottom",
+          labels: {
+            font: { size: 10, weight: "600" }
+          }
+        }
+      },
+      scales: {
+        x: {
+          max: 30000,
+          ticks: {
+            font: { size: 9 },
+            callback: v => v.toLocaleString()
+          },
+          title: {
+            display: true,
+            text: "Revenue (AED)",
+            font: { size: 10, weight: "600" }
+          }
+        },
+        y: {
+          ticks: {
+            font: { size: 10, weight: "600" }
+          },
+          grid: { display: false }
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

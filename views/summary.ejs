@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Executive Financial Summary</title>
+
+  <!-- Geist Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #8b5e2f;
+      --border-color: #c9a26b;
+      --card-bg: #EFCE8D;
+      --card-subtitle: #7A542A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Geist', system-ui, sans-serif;
+    }
+
+    body {
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* 🔽 SCALED PAGE */
+    .page {
+      width: 491px;
+      height: 694px;
+      background: #fff;
+      position: relative;
+      padding: 100px 44px 56px;
+    }
+
+    /* BORDER */
+    .page::before {
+      content: "";
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      right: 22px;
+      bottom: 34px;
+      border: 2px solid var(--border-color);
+      pointer-events: none;
+    }
+
+    /* LOGO */
+    .corner-logo {
+      position: absolute;
+      top: 38px;
+      right: 38px;
+      height: 32px;
+    }
+
+    /* TITLE */
+    .heading {
+      text-align: center;
+      color: var(--primary-color);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .subheading {
+      text-align: center;
+      color: var(--primary-color);
+      font-size: 15px;
+      font-weight: 600;
+      margin-top: 24px;
+      margin-bottom: 6px;
+    }
+
+    /* SHADOWED VALUES */
+    .shadow-text {
+      color: #000;
+      text-shadow: 0 2px 3px rgba(0, 0, 0, 0.28);
+    }
+
+    .main-value {
+      text-align: center;
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .secondary-value {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 26px;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--card-bg);
+      border-radius: 6px;
+      padding: 14px;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .card .value {
+      font-size: 16px;
+      font-weight: 800;
+      color: #000;
+      text-shadow: 0 2px 3px rgba(0, 0, 0, 0.28);
+    }
+
+    .card small {
+      display: block;
+      margin-top: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--card-subtitle);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    /* COMPARISON */
+    .comparison {
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .comparison span {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 4px;
+    }
+
+    .comparison strong {
+      font-size: 18px;
+      font-weight: 800;
+      text-shadow: 0 2px 3px rgba(0, 0, 0, 0.28);
+    }
+
+    /* SKYLINE */
+    .skyline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0.08;
+    }
+
+    /* FOOTER */
+    .footer {
+      position: absolute;
+      bottom: 18px;
+      left: 22px;
+      font-size: 10px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <img src="/images/svg_logo.svg" class="corner-logo" alt="Logo">
+
+  <h1 class="heading">EXECUTIVE FINANCIAL SUMMARY</h1>
+
+  <div class="subheading">ANNUAL NET PROFIT FORECAST</div>
+  <div class="main-value shadow-text"><%= annualNetProfit %></div>
+
+  <div class="subheading">MONTHLY AVERAGE NET PAYOUT</div>
+  <div class="secondary-value shadow-text"><%= monthlyAverage %></div>
+
+  <div class="card">
+    <div class="value"><%= grossAnnualRevenue %></div>
+    <small>Gross annual revenue</small>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="value"><%= averageADR %></div>
+      <small>Average ADR</small>
+    </div>
+    <div class="card">
+      <div class="value"><%= occupancyPercent %></div>
+      <small>Assumed occupancy %</small>
+    </div>
+  </div>
+
+  <div class="comparison">
+    <span>VS LONG TERM RENTAL</span>
+    <strong><%= yieldIncrease %></strong>
+  </div>
+
+  <img src="/images/illustration.png" class="skyline" alt="Skyline">
+
+  <div class="footer">Confidential © Royal Holiday Homes</div>
+
+</div>
+
+</body>
+</html>

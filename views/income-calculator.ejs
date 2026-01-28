@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Income Calculator</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      font-family: 'Geist', system-ui, sans-serif;
+    }
+
+    .a4-page {
+      width: 491px;
+      height: 694px;
+      background: white;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .inner-div {
+      width: 451px;
+      height: 654px;
+      border: 1px solid #caa46a;
+      padding: 18px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .corner-logo {
+      width: 14px;
+      position: absolute;
+      top: 18px;
+      right: 18px;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      color: #7A542A;
+      margin-bottom: 8px;
+    }
+
+    /* ===== LTR ROW ===== */
+    .ltr-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .ltr-box {
+      flex: 1;
+      border: 1px solid #caa46a;
+      border-radius: 6px;
+      padding: 8px 10px;
+      background: #fffaf0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ltr-label {
+      font-size: 9px;
+      color: #7A542A;
+      max-width: 65%;
+    }
+
+    .ltr-income {
+      font-size: 13px;
+      font-weight: 700;
+      color: #000;
+    }
+
+    /* ===== CALCULATOR ===== */
+    :root{
+      --gold:#c99a2e;
+      --border:#e6e6e6;
+      --card:#ffffff;
+      --success:#126d17;
+    }
+
+    .engine{
+      flex: 1;                         /* 🔑 fills remaining height */
+      background: var(--card);
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(42, 42, 42, 0.05);
+      padding: 4px;
+      display: flex;
+    }
+
+    .table-wrapper{
+      flex: 1;                         /* 🔑 fills engine */
+      display: flex;
+    }
+
+    table{
+      width:100%;
+      height:100%;                     /* 🔑 stretch table */
+      border-collapse:separate;
+      border-spacing:0 2px;
+    }
+
+    th, td{
+  padding:4px 6px;  
+  text-align:right;
+  font-size:9px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+    th:first-child, td:first-child{
+      text-align:left;
+      cursor:default;
+    }
+
+    td{
+      background:#fff;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+    }
+
+    td:first-child{
+      border-left:1px solid var(--border);
+      border-radius:4px 0 0 4px;
+    }
+
+    td:last-child{
+      border-right:1px solid var(--border);
+      border-radius:0 4px 4px 0;
+    }
+
+    .group td{
+      background:transparent;
+      border:none;
+      font-size:9px;
+      font-weight:600;
+    }
+
+    .active{
+      background:linear-gradient(180deg,var(--gold),#e5bf5a)!important;
+      color:white!important;
+    }
+
+    .net td{background:#fbf7ef;}
+    .increase td{background:#f2f8f2;}
+    .increase .active{color:var(--success)!important;}
+
+    /* ===== NOTE ===== */
+    .note-box {
+      background: #FFF8E1;
+      padding: 10px 12px;
+      font-size: 10px;
+      color: #45414A;
+      line-height: 1.4;
+      border-radius: 3px;
+      margin-top: auto;
+    }
+
+    .footer {
+      font-size: 10px;
+      color: #777;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="a4-page">
+  <div class="inner-div">
+
+    <img src="/images/R.svg" class="corner-logo" alt="Royal Logo">
+
+    <h1 class="title">INCOME CALCULATOR</h1>
+
+    <!-- LTR ROW -->
+    <div id="ltrRow" class="ltr-row"></div>
+
+    <!-- TABLE -->
+    <div id="calculatorMount" style="flex:1; display:flex;"></div>
+
+    <!-- NOTE -->
+    <div class="note-box">
+      <strong>Note:</strong> Please note this is a projection based on the information we have at current market.
+      Figures may vary over time depending on the market supply and demand.
+    </div>
+
+    
+</div>
+<div class="footer">Confidential © Royal Holiday Homes</div>
+</div>
+
+<script>
+  const calculatorData = {
+    ltrs: [
+      { label: "Long-term Rental (Classic 90%)", income: "AED 90,000" },
+      { label: "Long-term Rental (Premium 95%)", income: "AED 105,000" }
+    ],
+    occupancy: ["75%", "80%", "85%", "90%", "95%", "100%"],
+    sections: [
+      {
+        title: "INCOME",
+        rows: [
+          { label: "Gross Annual Revenue (AED)", values: [139632,148941,158249,167558,176867,186176] }
+        ]
+      },
+      {
+        title: "COSTS",
+        rows: [
+          { label: "Internet / Phone", values: [4320,4320,4320,4320,4320,4320] },
+          { label: "Utility Bills", values: [6500,6500,6500,6500,6500,6500] },
+          { label: "Maintenance", values: [1750,1750,1750,1750,1750,1750] }
+        ]
+      },
+      {
+        title: "FEES",
+        rows: [
+          { label: "Management Fees (17%)", values: [23737,25320,26902,28485,30067,31650] }
+        ]
+      },
+      {
+        title: "NET OUTCOME",
+        class: "net",
+        rows: [
+          { label: "Net Annual Income (AED)", values: [103324,111051,118777,126503,134230,141956] }
+        ]
+      },
+      {
+        title: "Increase vs Long-term Rental",
+        class: "increase",
+        rows: [
+          { label: "Increase vs Long-term Rental", values: ["15%","23%","32%","41%","49%","58%"] }
+        ]
+      }
+    ]
+  };
+
+  function renderCalculator(data){
+    document.getElementById("ltrRow").innerHTML = data.ltrs.map(ltr => `
+      <div class="ltr-box">
+        <div class="ltr-label">${ltr.label}</div>
+        <div class="ltr-income">${ltr.income}</div>
+      </div>
+    `).join("");
+
+    document.getElementById("calculatorMount").innerHTML = `
+      <div class="engine">
+        <div class="table-wrapper">
+          <table id="table">
+            <thead>
+              <tr>
+                <th>Occupancy</th>
+                ${data.occupancy.map((o,i)=>`
+                  <th onclick="selectCol(${i+1})">
+                    ${o}${o==="85%" ? "<br><small>Recommended</small>" : ""}
+                  </th>
+                `).join("")}
+              </tr>
+            </thead>
+            <tbody>
+              ${data.sections.map(section => `
+                <tr class="group"><td colspan="7">${section.title}</td></tr>
+                ${section.rows.map(row => `
+                  <tr class="${section.class || ""}">
+                    <td>${row.label}</td>
+                    ${row.values.map(v => `<td>${v}</td>`).join("")}
+                  </tr>
+                `).join("")}
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+
+    selectCol(3);
+  }
+
+  function selectCol(index){
+    document.querySelectorAll("#table tr").forEach(row=>{
+      row.querySelectorAll("th,td").forEach((cell,i)=>{
+        cell.classList.toggle("active", i === index);
+      });
+    });
+  }
+
+  renderCalculator(calculatorData);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>How It Works</title>
+
+  <!-- Geist Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      font-family: 'Geist', sans-serif;
+    }
+
+    .a4-page {
+      width: 491px;
+      height: 694px;
+      background: white;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .inner-div {
+      width: 451px;
+      height: 654px;
+      border: 2px solid #caa46a;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Corner Logo */
+    .corner-logo {
+      width: 14px;
+      position: absolute;
+      top: 18px;
+      right: 18px;
+    }
+
+    /* Title */
+    .title {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      color: #7A542A;
+      margin-bottom: 16px;
+    }
+
+    /* Flow Layout */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .step {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    /* Black Diamond */
+    .diamond {
+      width: 20px;
+      height: 20px;
+      background: black;
+      transform: rotate(45deg);
+      margin-top: 4px;
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    /* Gold Heading Bar */
+    .heading {
+      background: #EFCE8D;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 6px 15px;
+      clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%, 3% 50%);
+      margin-bottom: 4px;
+    }
+
+    .step p {
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Flow Arrow */
+    .flow-arrow {
+      width: 18px;
+      height: 18px;
+      margin: auto;
+    }
+
+    /* Background Illustration */
+    .bg-illustration {
+      width: 451px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      opacity: 0.1;
+      z-index: 1;
+    }
+
+    /* Footer */
+    .footer {
+      font-size: 10px;
+      position: absolute;
+      bottom: 5px;
+      left: 20px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="a4-page">
+  <div class="inner-div">
+
+    <img src="/images/R.svg" class="corner-logo" alt="Royal Logo">
+
+    <h1 class="title">HOW IT WORKS?</h1>
+
+    <div class="flow">
+
+      <div class="step">
+        <div class="diamond"></div>
+        <div class="content">
+          <div class="heading">ONBOARDING</div>
+          <p>Simple onboarding with clear terms, timelines, and revenue expectations.</p>
+        </div>
+      </div>
+
+      <img src="/images/arrow.svg" class="flow-arrow" alt="arrow">
+
+      <div class="step">
+        <div class="diamond"></div>
+        <div class="content">
+          <div class="heading">LICENSING</div>
+          <p>We handle all holiday home permits and compliance requirements.</p>
+        </div>
+      </div>
+
+      <img src="/images/arrow.svg" class="flow-arrow" alt="arrow">
+
+      <div class="step">
+        <div class="diamond"></div>
+        <div class="content">
+          <div class="heading">SETUP</div>
+          <p>Professional setup to maximize guest appeal and booking potential.</p>
+        </div>
+      </div>
+
+      <img src="/images/arrow.svg" class="flow-arrow" alt="arrow">
+
+      <div class="step">
+        <div class="diamond"></div>
+        <div class="content">
+          <div class="heading">LISTING & PRICING</div>
+          <p>Your property is listed across top platforms with demand-based pricing.</p>
+        </div>
+      </div>
+
+      <img src="/images/arrow.svg" class="flow-arrow" alt="arrow">
+
+      <div class="step">
+        <div class="diamond"></div>
+        <div class="content">
+          <div class="heading">OPERATIONS</div>
+          <p>End-to-end guest handling, housekeeping, and maintenance.</p>
+        </div>
+      </div>
+
+      <img src="/images/arrow.svg" class="flow-arrow" alt="arrow">
+
+      <div class="step">
+        <div class="diamond"></div>
+        <div class="content">
+          <div class="heading">REVENUE MANAGEMENT</div>
+          <p>Continuous performance tracking with transparent monthly reports.</p>
+        </div>
+      </div>
+
+      <img src="/images/arrow.svg" class="flow-arrow" alt="arrow">
+
+      <div class="step">
+        <div class="diamond"></div>
+        <div class="content">
+          <div class="heading">MONTHLY PAYOUT</div>
+          <p>Net earnings transferred directly to you every month.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <img src="/images/illustration.png" class="bg-illustration" alt="illustration">
+
+  </div>
+
+  <div class="footer">Confidential © Royal Holiday Homes</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Why Opt for Holiday Homes</title>
+
+  <!-- Geist Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #8b5e2f;
+      --border-color: #c9a26b;
+      --card-bg: #EFCE8D;
+      --side-bg: #7A542A;
+      --note-bg: #FFF6DD;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Geist', system-ui, sans-serif;
+    }
+
+    body {
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* 🔽 SCALED PAGE */
+    .page {
+      width: 491px;
+      height: 694px;
+      background: #fff;
+      position: relative;
+      padding: 44px 56px;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      right: 22px;
+      bottom: 34px;
+      border: 2px solid var(--border-color);
+      pointer-events: none;
+    }
+
+    /* LOGO */
+    .corner-logo {
+      position: absolute;
+      top: 38px;
+      right: 38px;
+      height: 32px;
+    }
+
+    /* HEADING */
+    .heading {
+      text-align: center;
+      color: var(--primary-color);
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    /* COMPARISON */
+    .comparison-section {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .side-label {
+      background: var(--side-bg);
+      color: #fff;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      text-align: center;
+      font-size: 9px;
+      font-weight: 600;
+      border-radius: 4px;
+      padding: 8px 2px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 6px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    .card img {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 9.5px;
+      font-weight: 600;
+      color: #815A2D;
+      line-height: 1.4;
+    }
+
+    /* NOTE */
+    .note {
+      background: var(--note-bg);
+      border-left: 4px solid var(--border-color);
+      padding: 10px 12px;
+      font-size: 10px;
+      line-height: 1.5;
+      margin-top: 18px;
+    }
+
+    /* SKYLINE */
+    .skyline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0.08;
+    }
+
+    /* FOOTER */
+    .footer {
+      position: absolute;
+      bottom: 18px;
+      left: 22px;
+      font-size: 10px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <img src="/images/svg_logo.svg" class="corner-logo" alt="Logo">
+
+  <h1 class="heading">WHY OPT FOR HOLIDAY HOMES?</h1>
+
+  <!-- Holiday Homes -->
+  <div class="comparison-section">
+    <div class="side-label">Holiday Home (Short-Term)</div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <img src="/images/higher.svg">
+        <p>32–58% Higher Returns</p>
+      </div>
+      <div class="card">
+        <img src="/images/higher_yield_through_seasonality.svg">
+        <p>Higher yield through seasonality</p>
+      </div>
+      <div class="card">
+        <img src="/images/asset_protection.svg">
+        <p>Asset protection & monitoring</p>
+      </div>
+      <div class="card">
+        <img src="/images/maintain_property_value.svg">
+        <p>Maintain property value</p>
+      </div>
+      <div class="card">
+        <img src="/images/reduced_long_term_tenant_risk.svg">
+        <p>Reduced long-term tenant risk</p>
+      </div>
+      <div class="card">
+        <img src="/images/flexibility_owner_usage.svg">
+        <p>Flexibility & owner usage</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Traditional Rental -->
+  <div class="comparison-section">
+    <div class="side-label">Traditional Long-Term Rental</div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <img src="/images/higher.svg">
+        <p>Limited pricing flexibility</p>
+      </div>
+      <div class="card">
+        <img src="/images/fixed_annual_income.svg">
+        <p>Fixed annual income</p>
+      </div>
+      <div class="card">
+        <img src="/images/tenant_disputes_and_issues.svg">
+        <p>Tenant disputes and issues</p>
+      </div>
+      <div class="card">
+        <img src="/images/property_tied_up.svg">
+        <p>Property tied up for 12+ months</p>
+      </div>
+      <div class="card">
+        <img src="/images/difficult_to_use_property_yourself.svg">
+        <p>Difficult to use property yourself</p>
+      </div>
+      <div class="card">
+        <img src="/images/wear_and_tear_over_time.svg">
+        <p>Wear and tear over time</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    Holiday homes allow your property to earn more by adapting pricing to market demand and seasonal trends.
+    With professional management and flexible usage, your asset stays well-maintained while generating
+    higher, performance-driven returns.
+  </div>
+
+  <img src="/images/illustration.png" class="skyline" alt="Skyline">
+
+  <div class="footer">Confidential © Royal Holiday Homes</div>
+
+</div>
+
+</body>
+</html>
