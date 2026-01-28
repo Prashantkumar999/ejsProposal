@@ -33,24 +33,31 @@ export class AppController {
     };
   }
 
-  // Route: /proposal/page3 - Monthly STR vs LTR Comparison Chart
+  // Route: /proposal/page3 - Income Calculator
   @Get('page3')
+  @Render('income-calculator')
+  getIncomeCalculator() {
+    return {};
+  }
+
+  // Route: /proposal/page4 - Expected Revenue Comparison (Chart)
+  @Get('page4')
   @Render('chart-monthly')
   getMonthlyChart() {
     // Chart data is handled in the EJS template via JavaScript
     return {};
   }
 
-  // Route: /proposal/page4 - Revenue vs Profit Analysis Chart
-  @Get('page4')
+  // Route: /proposal/page5 - Expected Revenue Comparison - Revenue vs Profit Analysis
+  @Get('page5')
   @Render('chart-revenue')
   getRevenueChart() {
     // Chart data is handled in the EJS template via JavaScript
     return {};
   }
 
-  // Route: /proposal/page5 - Why Your Property Earns More
-  @Get('page5')
+  // Route: /proposal/page6 - Why Your Property Earns More
+  @Get('page6')
   @Render('why-earns-more')
   getWhyEarnsMore() {
     return {
@@ -63,16 +70,16 @@ export class AppController {
     };
   }
 
-  // Route: /proposal/page6 - Why Opt for Holiday Homes
-  @Get('page6')
+  // Route: /proposal/page7 - Why Opt for Holiday Homes
+  @Get('page7')
   @Render('why-holiday-homes')
   getWhyHolidayHomes() {
     // This page uses static content, no dynamic data needed
     return {};
   }
 
-  // Route: /proposal/page7 - Why Royal Holiday Homes
-  @Get('page7')
+  // Route: /proposal/page9 - Why Royal Holiday Homes
+  @Get('page9')
   @Render('why-royal-homes')
   getWhyRoyalHomes() {
     // This page uses static content, no dynamic data needed
@@ -83,14 +90,6 @@ export class AppController {
   @Get('page8')
   @Render('how-it-works')
   getHowItWorks() {
-    // This page uses static content, no dynamic data needed
-    return {};
-  }
-
-  // Route: /proposal/page9 - Ready to Maximize
-  @Get('page9')
-  @Render('ready-to-maximize')
-  getReadyToMaximize() {
     // This page uses static content, no dynamic data needed
     return {};
   }
@@ -109,10 +108,11 @@ export class AppController {
     };
   }
 
-  // Route: /proposal/page11 - Income Calculator
+  // Route: /proposal/page11 - Ready to MAXIMISE Property's Potential
   @Get('page11')
-  @Render('income-calculator')
-  getIncomeCalculator() {
+  @Render('ready-to-maximize')
+  getReadyToMaximize() {
+    // This page uses static content, no dynamic data needed
     return {};
   }
 }
