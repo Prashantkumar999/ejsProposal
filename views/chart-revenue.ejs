@@ -22,8 +22,10 @@
       background: #f4f4f4;
       display: flex;
       justify-content: center;
+      margin: 0;
     }
 
+    /* PAGE */
     .a4-page {
       width: 491px;
       height: 694px;
@@ -31,8 +33,10 @@
       padding: 20px;
       box-sizing: border-box;
       position: relative;
+      overflow: hidden;
     }
 
+    /* INNER BORDER */
     .inner-div {
       width: 451px;
       height: 654px;
@@ -40,8 +44,10 @@
       padding: 5px 20px;
       box-sizing: border-box;
       position: relative;
+      z-index: 2;
     }
 
+    /* LOGO */
     .corner-logo {
       width: 14px;
       position: absolute;
@@ -49,6 +55,7 @@
       right: 18px;
     }
 
+    /* HEADINGS */
     .heading {
       text-align: center;
       color: #8b5e2f;
@@ -71,6 +78,7 @@
       margin-bottom: 12px;
     }
 
+    /* CHART */
     .chart-wrapper {
       height: 320px;
       margin-top: 70px;
@@ -81,12 +89,25 @@
       height: 100% !important;
     }
 
+    /* SKYLINE BACKGROUND */
+    .skyline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 491px;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* FOOTER */
     .footer {
       position: absolute;
       bottom: 5px;
       left: 20px;
       font-size: 10px;
       color: #777;
+      z-index: 3;
     }
   </style>
 </head>
@@ -94,6 +115,7 @@
 <body>
 
 <div class="a4-page">
+
   <div class="inner-div">
 
     <img src="/images/svg_logo.svg" class="corner-logo" alt="Logo">
@@ -108,11 +130,15 @@
 
   </div>
 
+  <!-- Skyline background (same as proposal page) -->
+  <img src="/images/illustration.png" class="skyline" alt="Skyline">
+
   <div class="footer">Confidential © Royal Holiday Homes</div>
+
 </div>
 
 <script>
-  // 🔹 Force Geist inside Chart.js
+  /* Force Geist inside Chart.js */
   Chart.defaults.font.family = "Geist, system-ui, sans-serif";
   Chart.defaults.font.size = 10;
 
@@ -137,32 +163,29 @@
     ]
   };
 
+  /* Value labels on bars */
   const valueLabelPlugin = {
-  id: 'valueLabel',
-  afterDatasetsDraw(chart) {
-    const { ctx } = chart;
-    ctx.save();
-    ctx.font = '600 9px Geist';
-    ctx.textAlign = 'center';
+    id: 'valueLabel',
+    afterDatasetsDraw(chart) {
+      const { ctx } = chart;
+      ctx.save();
+      ctx.font = '600 9px Geist';
+      ctx.textAlign = 'center';
 
-    chart.data.datasets.forEach((dataset, datasetIndex) => {
-      chart.getDatasetMeta(datasetIndex).data.forEach((bar, i) => {
-
-        // 🔹 Color logic
-        ctx.fillStyle = datasetIndex === 1 ? '#9ca3af' : '#000'; // gray for Net Revenue
-
-        ctx.fillText(
-          (dataset.data[i] / 1000).toFixed(1) + "K",
-          bar.x,
-          bar.y - 6
-        );
+      chart.data.datasets.forEach((dataset, datasetIndex) => {
+        chart.getDatasetMeta(datasetIndex).data.forEach((bar, i) => {
+          ctx.fillStyle = datasetIndex === 1 ? '#9ca3af' : '#000'; // gray for Net Revenue
+          ctx.fillText(
+            (dataset.data[i] / 1000).toFixed(1) + "K",
+            bar.x,
+            bar.y - 6
+          );
+        });
       });
-    });
 
-    ctx.restore();
-  }
-};
-
+      ctx.restore();
+    }
+  };
 
   new Chart(document.getElementById("revenueChart"), {
     type: "bar",
@@ -181,7 +204,7 @@
       scales: {
         x: {
           ticks: {
-            color: "#000", 
+            color: "#000",
             font: { size: 10, weight: "600" }
           },
           grid: { display: false }
